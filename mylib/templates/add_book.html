@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}add book{% endblock title %}
+{% block body %}
+{% for message in messages %}
+{% if message %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+    {{ message }}
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+{% endfor %}
+<nav aria-label="breadcrumb mb-1">
+    <ol class="breadcrumb mx-2">
+        <li class="breadcrumb-item"><a class="textwork" href="/viewbook">view book</a></li>
+    </ol>
+</nav>
+{% comment %} <div class="customback"> {% endcomment %}
+    <div class="container my-3 ">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="booktitle"  name="booktitle" placeholder="Book Title">
+            <label for="floatingInput">Book Title</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Author" name="author" placeholder="Author/editor">
+            <label for="floatingPassword">Author/editor</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="edition"  name="edition" placeholder="Edition">
+            <label for="floatingInput">Edition</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="place" name="place" placeholder="place">
+            <label for="floatingPassword">Place</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="publisher"  name="publisher" placeholder="publisher">
+            <label for="floatingInput">Publisher</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="year" name="year" placeholder="year">
+            <label for="floatingPassword">Year</label>
+        </div>
+        <button type="submit" class="btn btn-success">Add book</button>
+    </form>
+    </div>
+{% endblock body %}

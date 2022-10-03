@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}viewbook{% endblock title %}
+{% block body %}
+<nav aria-label="breadcrumb mb-1 mt-2">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item mx-3" >   
+       <form class="d-flex" method='post' role="search">
+        {% csrf_token %}
+      <input class="form-control me-2" name="sear" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </li>
+  </ol>
+</nav>
+
+<div class="container">
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0">
+<table class="table table-striped table-hover">
+    <thead class="table-success">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author/editor</th>
+          <th scope="col">Edition</th>
+          <th scope="col">Place</th>
+          <th scope="col">Publisher</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in book %}
+        <tr>
+          <td>{{n.book_title}}</td>
+          <td>{{n.book_author}}</td>
+          <td>{{n.book_edition}}</td>
+          <td>{{n.book_place}}</td>
+          <td>{{n.book_publisher}}</td>
+          <td>{{n.book_year}}</td>
+        </tr>
+        {% endfor %}
+       
+      </tbody>
+  </table>
+</div>
+</div>
+{% endblock body %}

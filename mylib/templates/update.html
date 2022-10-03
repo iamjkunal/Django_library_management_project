@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}update{% endblock title %}
+{% block body %}
+<div class="container my-3 ">
+    <form method="post">
+        {% csrf_token %}
+        {% for n in detail%}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="booktitle" value="{{n.book_title}}"  name="booktitle" placeholder="Book Title">
+            <label for="floatingInput">Book Title</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Author"  value="{{n.book_author}}"  name="author" placeholder="Author/editor">
+            <label for="floatingPassword">Author/editor</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="edition"  value="{{n.book_edition}}"  name="edition" placeholder="Edition">
+            <label for="floatingInput">Edition</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="place"  value="{{n.book_place}}"  name="place" placeholder="place">
+            <label for="floatingPassword">Place</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="publisher"  value="{{n.book_publisher}}"   name="publisher" placeholder="publisher">
+            <label for="floatingInput">Publisher</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="year" value="{{n.book_year}}"   name="year" placeholder="year">
+            <label for="floatingPassword">Year</label>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-warning">update book</button>
+    </form>
+    </div>
+{% endblock body %}

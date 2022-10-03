@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}signup{% endblock title %}
+
+{% block body %}
+<!-- this is for message display -->
+        {% for message in messages %}
+        {% if message %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    <div class="card mx-auto my-4  " style="width: 25rem;">
+        <div class="card text-center" style="width: 25rem;">
+            <div class="card-body py-3">
+                <h5 class="card-title mb-4 ">Library-registration</h5>
+                
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="row g-3 py-2">
+                        <div class="col">
+                          <input type="text" class="form-control" name="firstname" placeholder="Firstname" aria-label="First name">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" name="lastname" placeholder="Lastname" aria-label="Last name">
+                        </div>
+                      </div>
+                    <div class="form py-2">
+                        <input type="text" class="form-control" id="username" name='username' placeholder="Username">  
+                        <!-- <label for="username">username</label> -->
+                    </div>
+                    
+                    <div class="form py-2 ">
+                        <input type="email" class="form-control" id="useremail" name='useremail'  placeholder="Email id">
+                        <!-- <label for="Password">Email id</label>  -->
+                    </div>
+                    <div class="form py-2">
+                        <input type="password" class="form-control" id="Password1" name='password1'  placeholder="Password">
+                        <!-- <label for="Password">Password</label>  -->
+                    </div>
+                    <div class="form py-2">
+                        <input type="password" class="form-control" id="Password2" name='password2'  placeholder="confirm password">
+                        <!-- <label for="Password">Password</label>  -->
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary py-1" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card mx-auto my-4  " style="width: 25rem;">
+        <p class=" text-center py-3 pb-2">
+            Don't have account?<a href="/login" class="n-under" >login</a>.
+          </p>
+    </div>
+{% endblock body %}

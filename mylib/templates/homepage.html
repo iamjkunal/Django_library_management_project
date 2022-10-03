@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}home{% endblock title %}
+<!-- this is body of home page -->
+{% block body %}
+<!-- this is breadcrum -->
+
+<nav aria-label="breadcrumb mb-1">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a  class="textwork disable "href="">Home</a></li>
+      <li class="breadcrumb-item"><a class="textwork" href="/about-us">about us</a></li>
+      {% if user.is_authenticated %}
+      <li class="breadcrumb-item"><a class="textwork" href="/logout">logout</a></li>
+      {% else %}
+      <li class="breadcrumb-item"><a class="textwork" href="/login">login</a></li>
+      <li class="breadcrumb-item"><a  class="textwork"href="/signup">signup</a></li>
+      {% endif %}
+     
+    </ol>
+  </nav>
+
+<!-- this is carousel -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="/static/image4.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="/static/image2.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="/static/coverimage.jpg" class="d-block w-100" alt="...">
+      </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- this is operation link -->
+{% if user.is_active %}
+  <div class="container my-2">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-2">
+          <div class="col">
+              <div class="card shadow-sm bg-transparent">
+                  <img src="/static/viewbook.jpg" alt="" srcset="">
+
+                  <div class="card-body ">
+                      {% comment %} <p class="card-text text-light ">Mclaren 720s</p> {% endcomment %}
+                      <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                              <a class="btn btn-primary"  href="/viewbook" >View books</a>
+                              <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+{% endif %}
+{% if user.is_staff %}
+<div class="col">
+  <div class="card shadow-sm bg-transparent">
+      <img src="/static/addbook.jpg" alt="" srcset="">
+
+      <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                  <a class="btn btn-primary"  href="/add-book">Add book</a>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="col">
+  <div class="card shadow-sm bg-transparent">
+      <img src="/static/booksimages.jpg" alt="" srcset="">
+
+      <div class="card-body">
+          {% comment %} <p class="card-text text-light">McLaren speedtail</p> {% endcomment %}
+          <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                  <a href="/update-delete"class="btn btn-primary">up/del book</a>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock body %}
